@@ -8,9 +8,9 @@ export default function Greeting({ userName = "John" }) {
   else if (hour >= 17) greeting = "Good Evening";
 
   return (
-    <div className="flex flex-col items-center gap-0.5">
-      {/* Orb (100x100) with softer surrounding glow - Scaled down on Tablet */}
-      <div className="relative w-[100px] h-[100px] max-lg:w-[80px] max-lg:h-[80px] flex items-center justify-center">
+    <div className="flex flex-col items-center gap-2">
+      {/* Orb (130x130) with softer surrounding glow */}
+      <div className="relative w-[130px] h-[130px] flex items-center justify-center">
         {/* Very soft outer glow*/}
         <div className="absolute -inset-6 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.03)_35%,transparent_90%)] blur-3xl opacity-10" />
 
@@ -18,7 +18,7 @@ export default function Greeting({ userName = "John" }) {
         <div className="absolute -inset-1.5 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.07)_0%,transparent_68%)] blur-xl opacity-30" />
 
         {/* Orb image */}
-        <div className="relative w-[100px] h-[100px] max-lg:w-[80px] max-lg:h-[80px] rounded-full overflow-hidden">
+        <div className="relative w-[130px] h-[130px] rounded-full overflow-hidden">
           <img
             src={mainOrb}
             alt="AI Assistant"
@@ -29,12 +29,12 @@ export default function Greeting({ userName = "John" }) {
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-0 -mt-3">
+      <div className="flex flex-col items-center gap-0">
         <span className="text-[10px] sm:text-[11px] text-white/60">
           {greeting}, {userName}
         </span>
 
-        <h2 className="text-[18px] sm:text-[20px] lg:text-[32px] font-semibold text-[#ECECEC] tracking-tight text-center leading-[1.2]">
+        <h2 className="text-[18px] sm:text-[28px] lg:text-[32px] font-semibold text-[#ECECEC] tracking-tight text-center leading-[1.2]">
           How can i assist you today?
         </h2>
       </div>

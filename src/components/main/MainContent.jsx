@@ -10,7 +10,7 @@ export default function MainContent({ onMobileMenuOpen, isMobileMenuOpen }) {
       <Header onMobileMenuOpen={onMobileMenuOpen} />
 
       {/* Center content - no scroll on mobile as requested */}
-      <div className="relative flex-1 flex flex-col items-center justify-center gap-6 max-lg:gap-3 px-6 max-lg:pt-6 max-sm:pt-0 max-sm:gap-6 max-sm:px-1.5 overflow-hidden">
+      <div className="relative flex-1 flex flex-col items-center justify-center gap-6 px-6 max-lg:pt-6 max-sm:pt-0 max-sm:gap-6 max-sm:px-1.5 overflow-hidden">
         <div className="relative z-10 flex flex-col items-center gap-4 w-full">
           <Greeting userName="John" />
           <SuggestionCards />

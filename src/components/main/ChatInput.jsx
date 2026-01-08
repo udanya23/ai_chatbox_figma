@@ -44,7 +44,7 @@ export default function ChatInput() {
         className="w-full rounded-[14px] border border-white/10 overflow-hidden bg-[#212121] hidden sm:block"
       >
         {/* Top area */}
-        <div className="px-4 py-2 flex items-start justify-between gap-3 min-h-[40px]">
+        <div className="px-4 py-3 flex items-start justify-between gap-3 min-h-[50px]">
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
