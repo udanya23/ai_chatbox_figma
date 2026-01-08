@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, useState } from "react";
-import { Paperclip, Image as ImageIcon, ChevronDown } from "lucide-react";
+import { Paperclip, Image as ImageIcon, ChevronDown, Plus } from "lucide-react";
 import globeIcon from "../../assets/globe-icon.png";
 import sendArrow from "../../assets/send-arrow.png";
 
@@ -38,12 +38,13 @@ export default function ChatInput() {
 
   return (
     <div className="w-full max-w-[820px] mx-auto flex flex-col">
+      {/* Desktop/Tablet version */}
       <div
         ref={wrapRef}
-        className="w-full rounded-[14px] border border-white/10 overflow-hidden bg-[#212121]"
+        className="w-full rounded-[14px] border border-white/10 overflow-hidden bg-[#212121] hidden sm:block"
       >
         {/* Top area */}
-        <div className="px-4 pt-3 pb-4 flex items-start justify-between gap-3 min-h-[80px]">
+        <div className="px-4 py-2 flex items-start justify-between gap-3 min-h-[40px]">
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -121,8 +122,41 @@ export default function ChatInput() {
         </div>
       </div>
 
+      {/* Mobile version - Split layout */}
+      <div className="w-full sm:hidden flex items-center gap-2 mb-0">
+        {/* Plus button */}
+        <button
+          type="button"
+          onClick={() => console.log("ADD clicked")}
+          className="w-[40px] h-[40px] rounded-[10px] border border-white/10 bg-[#212121] flex items-center justify-center text-white hover:bg-[#2a2a2a] transition flex-shrink-0"
+        >
+          <Plus size={20} />
+        </button>
+
+        {/* Input Container */}
+        <div className="flex-1 h-[40px] rounded-[10px] border border-white/10 bg-[#212121] flex items-center px-3 gap-2">
+          <input
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={onKeyDown}
+            placeholder="Ask me anything..."
+            className="flex-1 min-w-0 bg-transparent text-[13px] text-white placeholder:text-white/60 outline-none"
+          />
+          <span className="text-[10px] text-white/50 flex-shrink-0 whitespace-nowrap">0/1500</span>
+          <button
+            type="button"
+            onClick={onSend}
+            className="w-[24px] h-[24px] flex items-center justify-center hover:opacity-80 active:opacity-60 transition cursor-pointer flex-shrink-0"
+            aria-label="Send message"
+          >
+            <img src={sendArrow} alt="Send" className="w-5 h-5 object-contain" />
+          </button>
+        </div>
+      </div>
+
       {/* Privacy notice */}
-      <p className="mt-3 text-center text-[9px] text-white/50">
+      <p className="mt-3 max-sm:mt-2 text-center text-[9px] max-sm:text-[10px] text-white/50">
         Centra may display inaccurate info, so please double check the response.{" "}
         <a
           href="#"
@@ -130,7 +164,7 @@ export default function ChatInput() {
             e.preventDefault();
             console.log("Privacy link clicked"); // dummy
           }}
-          className="underline hover:text-white/60 transition-colors"
+          className="underline text-white/90 hover:text-white transition-colors"
         >
           Your Privacy &amp; Centra AI
         </a>
@@ -138,3 +172,4 @@ export default function ChatInput() {
     </div>
   );
 }
+

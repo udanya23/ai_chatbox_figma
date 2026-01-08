@@ -1,100 +1,139 @@
 import React from "react";
-import { MessageCircle, Video, Image as ImageIcon, Code2 } from "lucide-react";
 import NavItem from "./NavItem";
 import ChatItem from "./ChatItem";
 import UpgradeCard from "./UpgradeCard";
 import UserProfile from "./UserProfile";
 import codegnanLogo from "../../assets/codegnan-logo.png";
+import chatIcon from "../../assets/chat-icon.png";
+import videoIcon from "../../assets/video-icon.png";
+import imageIcon from "../../assets/image-icon.png";
+import codeIcon from "../../assets/code-icon.png";
+import UiIcon from "../../assets/ui-icons.png";
+import AIChat from "../../assets/tabler-icon-brand-hipchat.png";
 
-// Toggle icon SVG component matching the provided design
-const ToggleIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="2" y="4" width="20" height="16" rx="4" stroke="currentColor" strokeWidth="1.5" fill="none" />
-    <circle cx="8" cy="9" r="2" fill="currentColor" />
-    <circle cx="8" cy="15" r="2" fill="currentColor" />
-  </svg>
-);
-
-export default function Sidebar({ isCollapsed = false, onToggle }) {
+export default function Sidebar({
+  isCollapsed = false,
+  onToggle,
+  isMobileMenuOpen = false,
+  onMobileMenuClose,
+}) {
   return (
-    <aside
-      className={`
-        h-screen p-3 bg-[#0b0b0b] flex flex-col flex-shrink-0
-        transition-all duration-300 ease-in-out
-        ${isCollapsed ? "w-[52px]" : "w-[200px]"}
-      `}
-    >
-      {/* Full height container with space-between */}
-      <div className="h-full flex flex-col justify-between overflow-hidden gap-3">
-        {/* TOP SECTION - fills available space */}
-        <div className="flex flex-col gap-3 flex-1 min-h-0">
-          {/* HEADER: Logo and toggle */}
-          <div className={`${isCollapsed ? "flex-col gap-2" : ""} flex items-center justify-between`}>
-            {/* Logo - hide when collapsed */}
-            {!isCollapsed && (
-              <div className="flex items-center">
+    <>
+      {/* Backdrop overlay - only visible on tablet */}
+      <div
+        className={`
+          fixed inset-0 bg-black/60 z-40
+          lg:hidden max-sm:hidden
+          transition-opacity duration-300
+          ${isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}
+        `}
+        onClick={onMobileMenuClose}
+      />
+
+      {/* Sidebar container */}
+      <aside
+        className={`
+          h-screen flex flex-col flex-shrink-0 fixed left-0 top-0
+          transition-all duration-300 ease-in-out
+
+          /* Desktop */
+          lg:relative lg:translate-x-0 lg:bg-[#0b0b0b] lg:p-3
+          ${isCollapsed ? "lg:w-[52px]" : "lg:w-[220px]"}
+
+          /* Tablet */
+          max-lg:z-50 max-lg:w-[200px] max-lg:bg-[#0b0b0b] max-lg:p-3
+          ${isMobileMenuOpen ? "max-lg:translate-x-0" : "max-lg:-translate-x-full"}
+
+          /* Mobile */
+          max-sm:w-full max-sm:bg-[#0b0b0b] max-sm:p-4 max-sm:z-50
+        `}
+      >
+        {/* SCROLLABLE CONTENT */}
+        <div
+          className="flex-1 flex flex-col gap-3 max-sm:gap-4 overflow-y-auto overflow-x-hidden scrollbar-hide pb-2"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <div className="flex flex-col gap-3 max-sm:gap-4">
+            {/* HEADER */}
+            <div
+              className={`${isCollapsed ? "lg:flex-col lg:gap-2" : ""
+                } flex items-center justify-between flex-shrink-0`}
+            >
+              {/* Logo */}
+              <div className={`flex items-center ${isCollapsed ? "lg:hidden" : ""}`}>
                 <img
                   src={codegnanLogo}
                   alt="Codegnan"
-                  className="h-[18px] object-contain"
+                  className="h-[23px] max-sm:h-[22px] object-contain"
                 />
               </div>
-            )}
 
-            {/* Sidebar toggle button */}
-            <button
-              onClick={onToggle}
-              className="w-[22px] h-[22px] rounded-[4px] hover:bg-white/5 flex items-center justify-center text-white/50 hover:text-white transition-colors"
-            >
-              <ToggleIcon />
-            </button>
-          </div>
+              {/* Desktop toggle button */}
+              <button
+                onClick={onToggle}
+                className="w-[15px] h-[15px] rounded-[3px] hover:bg-white/5 flex items-center justify-center text-white/50 hover:text-white transition-colors hidden lg:flex"
+                aria-label="Toggle sidebar"
+                title="Toggle"
+              >
+                <img
+                  src={UiIcon}
+                  alt="Toggle"
+                  draggable={false}
+                  className="w-[22px] h-[22px] max-sm:w-[15px] max-sm:h-[24px] object-contain"
+                />
+              </button>
 
-          {/* General Section */}
-          <div className={`flex flex-col gap-1.5 ${isCollapsed ? "items-center" : ""}`}>
-            {/* General header - hide when collapsed */}
-            {!isCollapsed && (
-              <span className="text-[10px] leading-[140%] font-normal text-white/55 px-1.5">
+              {/* Tablet + Mobile close button */}
+              <button
+                onClick={onMobileMenuClose}
+                className="w-[16px] h-[16px] max-sm:w-[15px] max-sm:h-[16px] rounded-[6px] hover:bg-white/5 flex items-center justify-center transition-colors lg:hidden"
+                aria-label="Close menu"
+                title="Close"
+              >
+                <img
+                  src={UiIcon}
+                  alt="Close"
+                  draggable={false}
+                  className="w-[22px] h-[22px] max-sm:w-[24px] max-sm:h-[24px] object-contain"
+                />
+              </button>
+            </div>
+
+            {/* General */}
+            <div className={`flex flex-col gap-1.5 max-sm:gap-2 ${isCollapsed ? "lg:items-center" : ""}`}>
+              <span className={`text-[10px] max-sm:text-[11px] leading-[140%] font-normal text-white/55 px-1.5 ${isCollapsed ? "lg:hidden" : ""}`}>
                 General
               </span>
-            )}
 
-            {/* Menu items */}
-            <div className={`flex flex-col gap-0.5 ${isCollapsed ? "items-center" : ""}`}>
-              <NavItem icon={MessageCircle} label="AI Chat" active collapsed={isCollapsed} />
-              <NavItem icon={Video} label="AI Video" collapsed={isCollapsed} />
-              <NavItem icon={ImageIcon} label="AI Image" collapsed={isCollapsed} />
-              <NavItem icon={Code2} label="AI Development" collapsed={isCollapsed} />
+              <div className={`flex flex-col gap-0.5 max-sm:gap-1 ${isCollapsed ? "lg:items-center" : ""}`}>
+                <NavItem icon={AIChat} label="AI Chat" active collapsed={isCollapsed} isMobile href="/chat" />
+                <NavItem icon={videoIcon} label="AI Video" collapsed={isCollapsed} isMobile href="/video" />
+                <NavItem icon={imageIcon} label="AI Image" collapsed={isCollapsed} isMobile href="/image" />
+                <NavItem icon={codeIcon} label="AI Development" collapsed={isCollapsed} isMobile href="/code" />
+              </div>
             </div>
-          </div>
 
-          {/* Previous Chat Section */}
-          <div className={`flex flex-col gap-1.5 ${isCollapsed ? "items-center" : ""}`}>
-            {/* Previous chat header - hide when collapsed */}
-            {!isCollapsed && (
-              <span className="text-[10px] leading-[140%] font-normal text-white/55 px-1.5">
+            {/* Previous Chats */}
+            <div className={`flex flex-col gap-1.5 max-sm:gap-2 ${isCollapsed ? "lg:items-center" : ""}`}>
+              <span className={`text-[10px] max-sm:text-[11px] leading-[140%] font-normal text-white/55 px-1.5 ${isCollapsed ? "lg:hidden" : ""}`}>
                 Previous Chat
               </span>
-            )}
 
-            {/* Chat history items */}
-            <div className={`flex flex-col gap-1 ${isCollapsed ? "items-center" : ""}`}>
-              <ChatItem label="Describe the benefits for a..." collapsed={isCollapsed} />
-              <ChatItem label="Generate a list current we..." collapsed={isCollapsed} />
-              <ChatItem label="Condense the following se..." collapsed={isCollapsed} />
-              <ChatItem label="Describe what post moder..." collapsed={isCollapsed} />
+              <div className={`flex flex-col gap-1 max-sm:gap-2 ${isCollapsed ? "lg:items-center" : ""}`}>
+                <ChatItem label="Describe the benefits for adopting" collapsed={isCollapsed} isMobile />
+                <ChatItem label="Generate a list current website of m..." collapsed={isCollapsed} isMobile />
+                <ChatItem label="Condense the following sentence" collapsed={isCollapsed} isMobile />
+              </div>
             </div>
           </div>
         </div>
 
-        {/* BOTTOM SECTION - hide when collapsed */}
-        {!isCollapsed && (
-          <div className="flex flex-col gap-2 flex-shrink-0 mt-auto">
-            <UpgradeCard />
-            <UserProfile />
-          </div>
-        )}
-      </div>
-    </aside>
+        {/* Footer */}
+        <div className={`flex-shrink-0 pt-2 flex flex-col gap-2 max-sm:gap-3 ${isCollapsed ? "lg:hidden" : ""}`}>
+          <UpgradeCard isMobile />
+          <UserProfile isMobile />
+        </div>
+      </aside >
+    </>
   );
 }

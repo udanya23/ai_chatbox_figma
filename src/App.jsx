@@ -4,11 +4,20 @@ import MainContent from "./components/main/MainContent";
 
 export default function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="w-screen h-screen overflow-hidden flex bg-[#0b0b0b]">
-      <Sidebar isCollapsed={isCollapsed} onToggle={() => setIsCollapsed(!isCollapsed)} />
-      <MainContent />
+      <Sidebar
+        isCollapsed={isCollapsed}
+        onToggle={() => setIsCollapsed(!isCollapsed)}
+        isMobileMenuOpen={isMobileMenuOpen}
+        onMobileMenuClose={() => setIsMobileMenuOpen(false)}
+      />
+      <MainContent
+        onMobileMenuOpen={() => setIsMobileMenuOpen(true)}
+        isMobileMenuOpen={isMobileMenuOpen}
+      />
     </div>
   );
 }
