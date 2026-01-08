@@ -22,10 +22,10 @@ export default function SuggestionCards() {
             flex flex-col items-start gap-2.5 text-left
             
             /* Mobile: first 2 cards half width, 3rd card full width */
-            max-sm:min-w-0 max-sm:p-2.5 max-sm:rounded-[16px]
+            max-sm:min-w-0 max-sm:p-1.5 max-sm:rounded-[16px]
             ${index < 2
-              ? "max-lg:flex-[1_1_calc(50%-6px)] max-lg:max-w-[calc(50%-6px)] max-sm:flex-[1_1_calc(50%-4px)] max-sm:max-w-[calc(50%-4px)] max-sm:h-[110px]"
-              : "max-lg:flex-[1_1_calc(50%-6px)] max-lg:max-w-[calc(50%-6px)] max-sm:flex-[1_1_100%] max-sm:max-w-full max-sm:h-[100px]"
+              ? "max-lg:flex-[1_1_calc(50%-6px)] max-lg:max-w-[calc(50%-6px)] max-sm:flex-[1_1_calc(50%-4px)] max-sm:max-w-[calc(50%-4px)] max-sm:min-h-[90px] max-sm:h-auto"
+              : "max-lg:flex-[1_1_calc(50%-6px)] max-lg:max-w-[calc(50%-6px)] max-sm:flex-[1_1_100%] max-sm:max-w-[400px] max-sm:min-h-[90px] max-sm:h-auto"
             }
           `}
         >
@@ -38,7 +38,7 @@ export default function SuggestionCards() {
             />
           </div>
 
-          <span className="text-[10px] max-sm:text-[10px] leading-[140%] text-white/90 overflow-hidden text-ellipsis line-clamp-2">
+          <span className="text-[10px] max-sm:text-[9.5px] leading-[140%] text-white/90 overflow-hidden text-ellipsis line-clamp-2 max-sm:line-clamp-3">
             {item.text}
           </span>
         </button>

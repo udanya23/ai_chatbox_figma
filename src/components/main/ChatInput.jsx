@@ -134,7 +134,7 @@ export default function ChatInput() {
         </button>
 
         {/* Input Container */}
-        <div className="flex-1 h-[40px] rounded-[10px] border border-white/10 bg-[#212121] flex items-center px-3 gap-2">
+        <div className="flex-1 h-[40px] rounded-[10px] border border-white/10 bg-[#333333] flex items-center px-3 gap-2">
           <input
             type="text"
             value={message}
