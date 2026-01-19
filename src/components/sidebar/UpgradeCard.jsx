@@ -1,6 +1,6 @@
 
 import React from "react";
-import upgradeIcon from "../../assets/upgrade-icon.png";
+import upgradeIcon from "../../images/tabler-icon-sparkles.png";
 
 export default function UpgradeCard({ isMobile = false }) {
   return (
@@ -14,12 +14,12 @@ export default function UpgradeCard({ isMobile = false }) {
     >
       <div className="flex items-start gap-2 max-sm:gap-3">
         {/* Icon circle */}
-        <div className="w-7 h-7 max-sm:w-9 max-sm:h-9 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+        <div className="w-7 h-7 max-sm:w-9 max-sm:h-9 rounded-full bg-white flex items-center justify-center flex-shrink-0">
           <img
             src={upgradeIcon}
             alt="upgrade"
             draggable={false}
-            className="w-full h-full object-contain p-[4px] max-sm:p-[5px]"
+            className="w-full h-full object-contain p-[7px] max-sm:p-[8px]"
           />
         </div>
 

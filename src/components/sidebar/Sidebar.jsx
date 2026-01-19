@@ -120,9 +120,9 @@ export default function Sidebar({
               </span>
 
               <div className={`flex flex-col gap-1 max-sm:gap-2 ${isCollapsed ? "lg:items-center" : ""}`}>
-                <ChatItem label="Describe the benefits for adopting" collapsed={isCollapsed} isMobile />
-                <ChatItem label="Generate a list current website of m..." collapsed={isCollapsed} isMobile />
-                <ChatItem label="Condense the following sentence" collapsed={isCollapsed} isMobile />
+                <ChatItem icon = {chatIcon} label="Describe the benefits for adopting" collapsed={isCollapsed} isMobile />
+                <ChatItem icon = {chatIcon} label="Generate a list current website of m..." collapsed={isCollapsed} isMobile />
+                <ChatItem icon = {chatIcon} label="Condense the following sentence" collapsed={isCollapsed} isMobile />
               </div>
             </div>
           </div>

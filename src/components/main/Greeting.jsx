@@ -23,18 +23,18 @@ export default function Greeting({ userName = "John" }) {
             src={mainOrb}
             alt="AI Assistant"
             draggable={false}
-            className="w-full h-full object-cover scale-[1.36] rotate-0 opacity-100
+            className="w-full h-full object-cover scale-[1.42] rotate-0 opacity-100
               drop-shadow-[0_10px_22px_rgba(0,0,0,0.35)]"
           />
         </div>
       </div>
 
       <div className="flex flex-col items-center gap-0">
-        <span className="text-[10px] sm:text-[13px] text-white/60">
+        <span className="text-[10px] sm:text-[11px] text-white/60">
           {greeting}, {userName}
         </span>
 
-        <h2 className="text-[18px] max-sm:text-[20px] sm:text-[26px] lg:text-[32px] font-semibold text-[#ECECEC] tracking-tight text-center leading-[1.2]">
+        <h2 className="text-[16px] max-sm:text-[17px] sm:text-[20px] lg:text-[20px] font-semibold text-[#ECECEC] tracking-tight text-center leading-[1.2]">
           How can i assist you today?
         </h2>
       </div>

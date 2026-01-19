@@ -1,7 +1,6 @@
 import React from "react";
-import { MessageSquareText } from "lucide-react";
 
-export default function ChatItem({ label, collapsed = false, isMobile = false }) {
+export default function ChatItem({ icon, label, collapsed = false, isMobile = false }) {
     return (
         <button
             className={[
@@ -15,11 +14,14 @@ export default function ChatItem({ label, collapsed = false, isMobile = false })
             title={label}
         >
             <span className={`${collapsed ? "" : "w-4 h-4 max-sm:w-5 max-sm:h-5"} flex items-center justify-center opacity-80`}>
-                <MessageSquareText size={12} className="max-sm:w-4 max-sm:h-4" />
+                <img
+                    src={icon}
+                    alt=""
+                    draggable={false}
+                    className="w-3 h-3 max-sm:w-4 max-sm:h-4 object-contain"
+                />
             </span>
             {!collapsed && <span className="truncate">{label}</span>}
         </button>
     );
 }
-
-
