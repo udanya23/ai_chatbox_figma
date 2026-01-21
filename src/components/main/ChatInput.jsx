@@ -1,7 +1,8 @@
 import React, { useMemo, useRef, useState } from "react";
-import { Paperclip, Image as ImageIcon, ChevronDown, Plus } from "lucide-react";
+import { Image as ImageIcon, ChevronDown, Plus } from "lucide-react";
 import globeIcon from "../../assets/globe-icon.png";
 import sendArrow from "../../assets/send-arrow.png";
+import addAttachmentIcon from "../../assets/add-attachment-icon.png";
 
 export default function ChatInput() {
   const [message, setMessage] = useState("");
@@ -93,7 +94,7 @@ export default function ChatInput() {
               onClick={() => console.log("ATTACHMENT clicked")}
               className="flex items-center gap-1.5 text-white/65 hover:text-white/85 transition-colors"
             >
-              <Paperclip size={13} />
+              <img src={addAttachmentIcon} alt="" className="w-3.5 h-3.5 object-contain" />
               <span className="text-[10px]">Add Attachment</span>
             </button>
 
